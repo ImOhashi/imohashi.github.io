@@ -7,7 +7,7 @@ const [role, ...tags] = profile.headline.split("|").map((s) => s.trim());
 <html lang="pt-BR">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="data:," />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="description" content={profile.summary} />
 		<meta name="generator" content={Astro.generator} />
@@ -612,6 +612,76 @@ const [role, ...tags] = profile.headline.split("|").map((s) => s.trim());
 		z-index: 0;
 		overflow: hidden;
 		pointer-events: none;
+		animation: bg-glitch 13s ease-in-out infinite;
+	}
+
+	.bg-fx::after {
+		content: "";
+		position: absolute;
+		inset: -2px;
+		background: linear-gradient(
+			180deg,
+			transparent 0%,
+			rgba(0, 229, 255, 0.08) 50%,
+			transparent 100%
+		);
+		opacity: 0;
+		mix-blend-mode: screen;
+		animation: bg-scan 13s ease-in-out infinite;
+	}
+
+	@keyframes bg-glitch {
+		0%,
+		89%,
+		100% {
+			transform: translate(0, 0);
+			filter: none;
+			opacity: 1;
+		}
+		89.4% {
+			transform: translate(-10px, 4px);
+			filter: hue-rotate(70deg) saturate(2);
+			opacity: 0.75;
+		}
+		89.8% {
+			transform: translate(8px, -6px);
+			filter: hue-rotate(-50deg) saturate(1.6);
+			opacity: 0.9;
+		}
+		90.2% {
+			transform: translate(-4px, 0);
+			filter: none;
+			opacity: 1;
+		}
+		90.6% {
+			transform: translate(6px, 3px);
+			filter: hue-rotate(140deg);
+			opacity: 0.8;
+		}
+		91%,
+		100% {
+			transform: translate(0, 0);
+			filter: none;
+			opacity: 1;
+		}
+	}
+
+	@keyframes bg-scan {
+		0%,
+		89%,
+		91.2%,
+		100% {
+			opacity: 0;
+			transform: translateY(-100%);
+		}
+		89.4%,
+		90.8% {
+			opacity: 1;
+		}
+		91% {
+			opacity: 0;
+			transform: translateY(100%);
+		}
 	}
 
 	.bg-fx span {
