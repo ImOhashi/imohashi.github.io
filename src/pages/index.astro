@@ -75,6 +75,30 @@ const [role, ...tags] = profile.headline.split("|").map((s) => s.trim());
 					</section>
 
 					<section>
+						<h2>Artigos</h2>
+						<div class="articles">
+							{
+								profile.articles.map((article) => (
+									<a class="article-card" href={article.url} target="_blank" rel="noopener noreferrer">
+										{article.image ? (
+											<img class="article-cover" src={article.image} alt="" loading="lazy" />
+										) : (
+											<div class="article-cover article-cover--placeholder">
+												<span>{article.source}</span>
+											</div>
+										)}
+										<div class="article-body">
+											<span class="article-source">{article.source}</span>
+											<h3>{article.title}</h3>
+											<p>{article.description}</p>
+										</div>
+									</a>
+								))
+							}
+						</div>
+					</section>
+
+					<section>
 						<h2>Experiência</h2>
 						<ol class="timeline">
 							{
@@ -389,6 +413,90 @@ const [role, ...tags] = profile.headline.split("|").map((s) => s.trim());
 	.lede {
 		font-size: 1.05rem;
 		color: var(--muted);
+	}
+
+	.articles {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.1rem;
+	}
+
+	.article-card {
+		display: flex;
+		flex-direction: column;
+		background: var(--card-bg);
+		border: 1px solid var(--card-border);
+		border-radius: 12px;
+		overflow: hidden;
+		text-decoration: none;
+		color: inherit;
+		transition:
+			transform 0.2s,
+			border-color 0.2s,
+			box-shadow 0.2s;
+	}
+
+	.article-card:hover {
+		transform: translateY(-3px);
+		border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+		box-shadow: 0 8px 28px rgba(0, 229, 255, 0.18);
+	}
+
+	.article-cover {
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+		display: block;
+	}
+
+	.article-cover--placeholder {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 30%, transparent), color-mix(in srgb, var(--accent-2) 30%, transparent));
+	}
+
+	.article-cover--placeholder span {
+		font-family: "JetBrains Mono", monospace;
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		font-size: 0.8rem;
+		color: var(--content-fg);
+		opacity: 0.85;
+	}
+
+	.article-body {
+		padding: 1rem 1.1rem 1.2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+
+	.article-source {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.7rem;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--accent-2);
+	}
+
+	.article-body h3 {
+		font-size: 1rem;
+		margin: 0;
+		line-height: 1.3;
+	}
+
+	.article-body p {
+		font-size: 0.85rem;
+		color: var(--muted);
+		margin: 0;
+		line-height: 1.45;
+	}
+
+	@media (max-width: 620px) {
+		.articles {
+			grid-template-columns: 1fr;
+		}
 	}
 
 	.timeline {

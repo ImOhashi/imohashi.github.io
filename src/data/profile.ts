@@ -16,6 +16,14 @@ export interface Education {
   period: string;
 }
 
+export interface Article {
+  title: string;
+  description: string;
+  url: string;
+  source: "Medium" | "LinkedIn";
+  image?: string; // só preenchido quando o artigo tem uma capa própria
+}
+
 export interface Profile {
   name: string;
   headline: string; // o "título" abaixo do nome, ex: cargo atual
@@ -29,6 +37,7 @@ export interface Profile {
   experience: Experience[];
   education: Education[];
   certifications: string[];
+  articles: Article[];
 }
 
 export const profile: Profile = {
@@ -37,9 +46,15 @@ export const profile: Profile = {
     "Senior Software Engineer at Itaú Unibanco | Tech Lead | Software & Cloud Architecture | Java | Kotlin | AWS",
   location: "São Paulo, São Paulo, Brasil",
   summary:
-    "Engenheiro de software com foco em tecnologias back-end e computação " +
-    "em nuvem, principalmente Amazon Web Services (AWS). Entusiasta da " +
-    "cultura DevOps e apaixonado por Docker e seu ecossistema.",
+    "Engenheiro de software sênior, com passagens por bancos como Itaú " +
+    "Unibanco, Santander e C6 Bank e vasta experiência como Tech Lead nos " +
+    "mais diversos contextos. Foco em back-end, arquitetura de software e " +
+    "computação em nuvem — principalmente AWS e seu ecossistema, seja em " +
+    "arquiteturas serverless ou microservices. Entusiasta de Spring e da " +
+    "cultura DevOps, apaixonado por Docker e seu universo, e aprendiz de " +
+    "Golang. Gosto de compartilhar o que aprendo por meio de artigos, " +
+    "palestras e meetups. Fora do teclado, sou apaixonado por música e " +
+    "tenho um cachorro de nome esquisito.",
   photo: "/profile-photo.jpeg",
   email: "leonardoohashi.mkt@gmail.com",
   links: [
@@ -48,6 +63,7 @@ export const profile: Profile = {
       url: "https://www.linkedin.com/in/leonardofonseca-ohashi",
     },
     { label: "GitHub", url: "https://github.com/ImOhashi" },
+    { label: "Medium", url: "https://medium.com/@leonardoohashi.mkt" },
   ],
   skills: [
     "Java",
@@ -202,5 +218,38 @@ export const profile: Profile = {
     "Architecting on AWS (Amazon Web Services)",
     "Arquitetura Hexagonal/Ports and Adapters NA PRÁTICA (Udemy)",
     "Apache Kafka (Udemy)",
+  ],
+  articles: [
+    {
+      title: "Implementando Serviços Assíncronos em Spring Boot com Java",
+      description:
+        "Guia prático para implementar serviços assíncronos em aplicações Spring Boot usando @Async e ThreadPoolTaskExecutor.",
+      url: "https://www.linkedin.com/pulse/implementando-servi%C3%A7os-ass%C3%ADncronos-em-spring-boot-com-fonseca-ohashi-dct8f/",
+      source: "LinkedIn",
+      image:
+        "https://media.licdn.com/dms/image/v2/D4D12AQE1sWT2oOCI9w/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1734574198990?e=2147483647&v=beta&t=ZNyzkeu1uiHPIteVg3XDGn1H-bngLrAzNWNnjuyjkls",
+    },
+    {
+      title: "Implementando Serviços Assíncronos em Spring Boot com Java",
+      description:
+        "A mesma discussão sobre @Async e ThreadPoolTaskExecutor, publicada no Medium.",
+      url: "https://medium.com/@leonardoohashi.mkt/implementando-servi%C3%A7os-ass%C3%ADncronos-em-spring-boot-com-java-720326bef0e2",
+      source: "Medium",
+    },
+    {
+      title: "Como não usar try-catch: uma breve provocação",
+      description:
+        "Uma reflexão sobre tratamento de exceções em Java: por que usar exceções específicas e centralizar o gerenciamento de erros em vez de espalhar try-catch genéricos pelo código.",
+      url: "https://medium.com/@leonardoohashi.mkt/como-n%C3%A3o-usar-try-catch-uma-breve-provoca%C3%A7%C3%A3o-24ca00d54e61",
+      source: "Medium",
+    },
+    {
+      title:
+        "Criando ferramentas internas: como AOP e annotations customizadas podem acelerar seu time",
+      description:
+        "Como Programação Orientada a Aspectos e annotations customizadas ajudam times a reduzir redundância de código e acelerar a produtividade.",
+      url: "https://www.linkedin.com/pulse/criando-ferramentas-internas-como-aop-e-annotations-fonseca-ohashi-pvl9f/",
+      source: "LinkedIn",
+    },
   ],
 };
