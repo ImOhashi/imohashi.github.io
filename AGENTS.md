@@ -18,14 +18,18 @@ apresentação (`src/pages/*.astro`) explícita.
   privacidade); GitHub assumido como `github.com/ImOhashi`.
 - `src/pages/index.astro` renderiza `profile.ts` (não tem dado hardcoded);
   seções: Sobre, Experiência, Formação, Skills, Idiomas, Certificações.
+  Layout em duas colunas (sidebar navy + conteúdo), paleta cyberpunk
+  (ciano/magenta neon), fundo animado com blobs, glitch periódico na foto.
 - `astro.config.mjs` com `site: 'https://imohashi.github.io'`.
 - `.github/workflows/deploy.yml` criado (build com `withastro/action` +
-  `actions/deploy-pages`) — falta habilitar "GitHub Actions" como source do
-  Pages nas configurações do repo e dar push para main.
+  `actions/deploy-pages`).
 - `package.json` renomeado de `ossified-osiris` (nome aleatório do
   scaffold) para `imohashi.github.io`.
-- Ainda faltam: habilitar Pages no GitHub, push/deploy, revisão visual do
-  design.
+- Commit inicial feito e push para `origin/main`
+  (github.com/ImOhashi/imohashi.github.io).
+- Falta apenas: habilitar "GitHub Actions" como source do Pages em
+  Settings → Pages do repo (não há `gh` CLI autenticado neste ambiente
+  para fazer isso via API — é passo manual do usuário).
 
 ## Desenvolvimento (Astro)
 
